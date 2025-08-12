@@ -1,0 +1,50 @@
+<!-- 主容器 -->
+<scroll-view class="container" scroll-y="true" style="height: 100vh;">
+    <!-- 顶部标题 -->
+    <view class="header">
+        <text class="title">声乐评估录音</text>
+    </view>
+    <!-- 参考歌曲显示区 -->
+    <view class="song-info">
+        <view class="song-item">
+            <image src="/images/music-icon.png" class="music-icon" />
+            <text class="song-text">参考歌曲：{{songName}} - {{artist}}</text>
+        </view>
+    </view>
+    <!-- 录音控制核心区域 -->
+    <view class="record-section">
+        <!-- 录音按钮 -->
+        <button class="record-btn {{isRecording ? 'recording' : ''}}" bind:tap="handleRecordClick" disabled="{{isSubmitting}}">
+            {{isRecording ? '停止录音' : '开始录音'}}
+        </button>
+        <!-- 录音时长显示 -->
+        <view class="duration-display" wx:if="{{isRecording || hasRecorded}}">
+            <text class="duration-text">{{formatTime(recordDuration)}}</text>
+        </view>
+    </view>
+    <!-- 音频预览区 -->
+    <view class="audio-preview" wx:if="{{hasRecorded && tempFilePath}}">
+        <view class="preview-title">
+            <text class="preview-text">录音预览</text>
+        </view>
+        <!-- 音频播放器 -->
+        <view class="audio-player">
+            <audio src="{{tempFilePath}}" controls="{{true}}" class="audio-control"></audio>
+        </view>
+        <!-- 重录按钮 -->
+        <view class="retry-section">
+            <button class="retry-btn" bind:tap="retryRecord">
+                <image src="/images/retry.png" class="retry-icon" />
+                <text class="retry-text">重新录制</text>
+            </button>
+        </view>
+    </view>
+    <!-- 底部占位，防止内容被底部按钮遮挡 -->
+    <view class="bottom-placeholder" wx:if="{{hasRecorded}}"></view>
+</scroll-view>
+<!-- 提交评估按钮 -->
+<view class="submit-section" wx:if="{{hasRecorded}}">
+    <button class="submit-btn {{isSubmitting ? 'submitting' : ''}}" bind:tap="submitEvaluation" disabled="{{isSubmitting}}">
+        {{isSubmitting ? '提交中...' : '提交评估'}}
+    </button>
+</view>

@@ -1,0 +1,58 @@
+<!-- components/heatmap/heatmap.wxml -->
+<view class="heatmap-container">
+    <!-- 热力图主体 -->
+    <view class="heatmap-main">
+        <!-- 时间轴标签 -->
+        <view class="time-axis">
+            <view class="axis-label">时间</view>
+            <view class="time-labels">
+                <text wx:for="{{timeLabels}}" wx:key="index" class="time-label" style="width: {{cellWidth * scale}}rpx;">
+                    {{item}}
+                </text>
+            </view>
+        </view>
+        <!-- 热力图网格 -->
+        <view class="heatmap-grid">
+            <!-- 节拍轴标签 -->
+            <view class="beat-axis">
+                <view class="axis-label">节拍</view>
+                <view class="beat-labels">
+                    <text wx:for="{{beatLabels}}" wx:key="index" class="beat-label" style="height: {{cellHeight * scale}}rpx;">
+                        {{item}}
+                    </text>
+                </view>
+            </view>
+            <!-- 热力图单元格 -->
+            <view class="heatmap-cells">
+                <view wx:for="{{processedData}}" wx:for-item="row" wx:for-index="rowIndex" wx:key="rowIndex" class="heatmap-row">
+                    <view wx:for="{{row}}" wx:for-item="cell" wx:for-index="colIndex" wx:key="colIndex" class="heatmap-cell" style="{{getCellStyle(cell, rowIndex, colIndex)}}" data-row="{{rowIndex}}" data-col="{{colIndex}}" data-value="{{cell}}" bindtap="onCellTap" bindlongpress="onCellLongPress">
+                        <text class="cell-value" wx:if="{{scale > 1.5}}">{{cell}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 图例 -->
+    <view class="legend" wx:if="{{showLegend}}">
+        <view class="legend-title">偏差程度</view>
+        <view class="legend-gradient">
+            <view wx:for="{{getLegendColors()}}" wx:key="index" class="legend-color" style="background-color: {{item}};"></view>
+        </view>
+        <view class="legend-labels">
+            <text wx:for="{{getLegendLabels()}}" wx:key="index" class="legend-label">{{item}}</text>
+        </view>
+    </view>
+    <!-- 缩放控制 -->
+    <view class="zoom-controls" wx:if="{{enableZoom}}">
+        <button class="zoom-btn {{isZoomed ? 'active' : ''}}" bindtap="resetZoom" wx:if="{{isZoomed}}">
+            重置
+        </button>
+    </view>
+    <!-- 提示框 -->
+    <view class="tooltip {{showTooltip ? 'show' : ''}}" style="left: {{tooltipPosition.x}}rpx; top: {{tooltipPosition.y}}rpx;" wx:if="{{showTooltip && tooltipData}}">
+        <view class="tooltip-content">
+            <view class="tooltip-title">{{tooltipData.timeLabel}} - {{tooltipData.beatLabel}}</view>
+            <view class="tooltip-value">偏差值: {{tooltipData.value}}</view>
+        </view>
+    </view>
+</view>

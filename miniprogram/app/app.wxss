@@ -1,0 +1,243 @@
+/* 全局样式重置 */
+page {
+  background-color: #f6f6f6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* 1. 全局渐变背景 */
+.page-bg {
+  background: linear-gradient(to bottom, #e6f7ff, #ffffff);
+  height: 100vh;
+  width: 100%;
+}
+
+/* 2. 按钮样式规范 */
+.circle-btn {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 36rpx;
+  font-weight: bold;
+  box-shadow: 0 8rpx 16rpx rgba(24, 144, 255, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+/* 按钮颜色扩展 */
+.primary-btn { 
+  background-color: #1890ff; 
+}
+
+.success-btn { 
+  background-color: #07C160; 
+}
+
+.danger-btn { 
+  background-color: #e64340; 
+}
+
+/* 3. 文字样式规范 */
+.title-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1890ff;
+  line-height: 1.4;
+}
+
+.content-text {
+  font-size: 32rpx;
+  color: #333;
+  line-height: 1.5;
+}
+
+.sub-text {
+  font-size: 28rpx;
+  color: #999;
+  line-height: 1.4;
+}
+
+/* 4. 布局工具类 */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-v-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-h-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 5. 交互状态 */
+.active:active {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* 6. 间距工具类 */
+.margin-top-10 { margin-top: 10rpx; }
+.margin-top-20 { margin-top: 20rpx; }
+.margin-top-30 { margin-top: 30rpx; }
+.margin-top-40 { margin-top: 40rpx; }
+
+.margin-bottom-10 { margin-bottom: 10rpx; }
+.margin-bottom-20 { margin-bottom: 20rpx; }
+.margin-bottom-30 { margin-bottom: 30rpx; }
+.margin-bottom-40 { margin-bottom: 40rpx; }
+
+.padding-10 { padding: 10rpx; }
+.padding-20 { padding: 20rpx; }
+.padding-30 { padding: 30rpx; }
+.padding-40 { padding: 40rpx; }
+
+/* 7. 圆角工具类 */
+.radius-8 { border-radius: 8rpx; }
+.radius-12 { border-radius: 12rpx; }
+.radius-16 { border-radius: 16rpx; }
+.radius-20 { border-radius: 20rpx; }
+
+/* 8. 阴影工具类 */
+.shadow-light {
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.shadow-medium {
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+.shadow-heavy {
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 9. 卡片样式 */
+.card {
+  background: white;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  margin: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 10. 分割线 */
+.divider {
+  height: 1rpx;
+  background-color: #e8e8e8;
+  margin: 20rpx 0;
+}
+
+/* 11. 加载状态 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40rpx;
+  color: #999;
+}
+
+/* 12. 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 40rpx;
+  color: #999;
+}
+
+.empty-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.6;
+}
+
+/* 13. 响应式适配 */
+@media (max-width: 750rpx) {
+  .title-text {
+    font-size: 32rpx;
+  }
+  
+  .content-text {
+    font-size: 28rpx;
+  }
+  
+  .sub-text {
+    font-size: 24rpx;
+  }
+  
+  .circle-btn {
+    width: 180rpx;
+    height: 180rpx;
+    font-size: 32rpx;
+  }
+}
+
+/* 14. 动画效果 */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 15. 安全区域适配 */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}

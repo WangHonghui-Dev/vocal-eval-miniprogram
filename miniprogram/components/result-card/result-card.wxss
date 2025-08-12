@@ -1,0 +1,282 @@
+/* components/result-card/result-card.wxss */
+
+.result-card {
+  width: 100%;
+  background: white;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* 卡片头部 */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  background-color: #1890ff;
+  color: white;
+}
+
+.card-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: white;
+}
+
+.expand-icon {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.icon-text {
+  font-size: 32rpx;
+  color: white;
+  font-weight: bold;
+}
+
+/* 评分显示区域 */
+.score-area {
+  display: flex;
+  align-items: center;
+  padding: 40rpx 30rpx;
+  gap: 40rpx;
+}
+
+/* 环形进度条 */
+.progress-ring {
+  position: relative;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.progress-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.progress-inner {
+  width: 80rpx;
+  height: 80rpx;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.score-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.score-unit {
+  font-size: 20rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+/* 评级信息 */
+.grade-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.grade-text {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.grade-desc {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 详细分析区域 */
+.detail-area {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.detail-area.expanded {
+  max-height: 1000rpx;
+  padding: 30rpx;
+}
+
+/* 分析文本 */
+.analysis-text {
+  margin-bottom: 30rpx;
+}
+
+.analysis-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.analysis-content {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 图表区域 */
+.chart-area {
+  margin-bottom: 30rpx;
+}
+
+.chart-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.chart-container {
+  background: white;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  box-shadow: 0 1rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.bar-chart {
+  display: flex;
+  align-items: end;
+  justify-content: space-around;
+  height: 200rpx;
+  gap: 8rpx;
+}
+
+.bar-item {
+  flex: 1;
+  min-width: 40rpx;
+  border-radius: 4rpx 4rpx 0 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.bar-label {
+  position: absolute;
+  bottom: -30rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20rpx;
+  color: #999;
+  white-space: nowrap;
+}
+
+/* 建议区域 */
+.suggestion-area {
+  background: white;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  box-shadow: 0 1rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.suggestion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.suggestion-item {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+  padding-left: 20rpx;
+}
+
+/* 交互反馈 */
+.active:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* 响应式适配 */
+@media (max-width: 750rpx) {
+  .card-header {
+    padding: 20rpx;
+  }
+  
+  .card-title {
+    font-size: 32rpx;
+  }
+  
+  .score-area {
+    padding: 30rpx 20rpx;
+    gap: 30rpx;
+  }
+  
+  .progress-ring {
+    width: 100rpx;
+    height: 100rpx;
+  }
+  
+  .progress-inner {
+    width: 70rpx;
+    height: 70rpx;
+  }
+  
+  .score-text {
+    font-size: 32rpx;
+  }
+  
+  .grade-text {
+    font-size: 28rpx;
+  }
+  
+  .grade-desc {
+    font-size: 24rpx;
+  }
+  
+  .detail-area.expanded {
+    padding: 20rpx;
+  }
+  
+  .analysis-title,
+  .chart-title,
+  .suggestion-title {
+    font-size: 28rpx;
+  }
+  
+  .analysis-content,
+  .suggestion-item {
+    font-size: 24rpx;
+  }
+}

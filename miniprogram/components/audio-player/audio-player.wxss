@@ -1,0 +1,156 @@
+/* components/audio-player/audio-player.wxss */
+
+.audio-player {
+  width: 100%;
+  padding: 30rpx;
+  background: white;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 控制区域 */
+.control-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx;
+  gap: 40rpx;
+}
+
+/* 播放按钮 */
+.play-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background-color: #1890ff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.play-btn.playing {
+  background-color: #07C160;
+}
+
+.play-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 静音按钮 */
+.mute-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  border: 2rpx solid #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.mute-btn.muted {
+  background-color: #e64340;
+  border-color: #e64340;
+}
+
+.mute-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+/* 进度区域 */
+.progress-area {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+/* 时间文本 */
+.time-text {
+  font-size: 28rpx;
+  color: #999;
+  min-width: 80rpx;
+  text-align: center;
+}
+
+/* 进度条容器 */
+.progress-container {
+  flex: 1;
+  height: 8rpx;
+  background-color: #eee;
+  border-radius: 4rpx;
+  position: relative;
+}
+
+/* 进度条样式 */
+.progress-slider {
+  width: 100%;
+  height: 8rpx;
+}
+
+/* 循环播放指示器 */
+.loop-indicator {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(24, 144, 255, 0.1);
+  border-radius: 50%;
+}
+
+.loop-icon {
+  width: 24rpx;
+  height: 24rpx;
+  opacity: 0.6;
+}
+
+/* 交互反馈 */
+.active:active {
+  transform: scale(0.9);
+  opacity: 0.9;
+}
+
+/* 响应式适配 */
+@media (max-width: 750rpx) {
+  .audio-player {
+    padding: 20rpx;
+  }
+  
+  .control-area {
+    gap: 30rpx;
+    margin-bottom: 20rpx;
+  }
+  
+  .play-btn {
+    width: 70rpx;
+    height: 70rpx;
+  }
+  
+  .play-icon {
+    width: 36rpx;
+    height: 36rpx;
+  }
+  
+  .mute-btn {
+    width: 50rpx;
+    height: 50rpx;
+  }
+  
+  .mute-icon {
+    width: 28rpx;
+    height: 28rpx;
+  }
+  
+  .time-text {
+    font-size: 24rpx;
+    min-width: 70rpx;
+  }
+}

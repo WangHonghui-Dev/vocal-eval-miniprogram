@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/record/record",
+    "pages/result/result"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1890ff",
+    "navigationBarTitleText": "声乐技巧评估",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f6f6f6"
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-icon": "@vant/weapp/icon/index"
+  },
+  "permission": {
+    "scope.record": {
+      "desc": "需要您的麦克风权限进行录音评估"
+    }
+  },
+  "networkTimeout": {
+    "request": 10000
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

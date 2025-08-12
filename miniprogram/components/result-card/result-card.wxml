@@ -1,0 +1,59 @@
+<!-- components/result-card/result-card.wxml -->
+<view class="result-card active" bindtap="toggleExpand">
+    <!-- 卡片头部 -->
+    <view class="card-header">
+        <text class="card-title">{{title}}</text>
+        <view class="expand-icon {{isExpanded ? 'expanded' : ''}}">
+            <text class="icon-text">{{isExpanded ? '−' : '+'}}</text>
+        </view>
+    </view>
+    <!-- 评分显示区域 -->
+    <view class="score-area">
+        <!-- 环形进度条 -->
+        <view class="progress-ring">
+            <view class="progress-circle" style="background: conic-gradient({{progressColor}} {{score * 3.6}}deg, #f0f0f0 0deg);">
+                <view class="progress-inner">
+                    <text class="score-text" style="color: {{gradeColor}};">{{formatScore()}}</text>
+                    <text class="score-unit">分</text>
+                </view>
+            </view>
+        </view>
+        <!-- 评级信息 -->
+        <view class="grade-info">
+            <text class="grade-text" style="color: {{gradeColor}};">{{grade}}</text>
+            <text class="grade-desc">{{getAnalysisText()}}</text>
+        </view>
+    </view>
+    <!-- 详细分析区域（展开时显示） -->
+    <view class="detail-area {{isExpanded ? 'expanded' : ''}}">
+        <!-- 分析文本 -->
+        <view class="analysis-text">
+            <text class="analysis-title">详细分析</text>
+            <text class="analysis-content">{{getAnalysisText()}}</text>
+        </view>
+        <!-- 图表区域 -->
+        <view class="chart-area" wx:if="{{chartData.length > 0}}">
+            <text class="chart-title">数据趋势</text>
+            <view class="chart-container">
+                <!-- 简单的柱状图 -->
+                <view class="bar-chart">
+                    <view class="bar-item" wx:for="{{chartData}}" wx:key="x" style="height: {{item.y * 0.8}}%; background-color: {{progressColor}};">
+                        <text class="bar-label">{{item.label}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 建议区域 -->
+        <view class="suggestion-area">
+            <text class="suggestion-title">改进建议</text>
+            <view class="suggestion-list">
+                <text class="suggestion-item" wx:if="{{score < 90}}">
+                    • 建议进行专项训练，提升{{title.replace('评估', '')}}水平
+                </text>
+                <text class="suggestion-item" wx:if="{{score < 80}}">• 可以寻求专业指导，获得更系统的训练方法</text>
+                <text class="suggestion-item" wx:if="{{score < 70}}">• 建议制定详细的练习计划，坚持每日训练</text>
+                <text class="suggestion-item" wx:if="{{score >= 90}}">• 继续保持，您的表现非常出色！</text>
+            </view>
+        </view>
+    </view>
+</view>

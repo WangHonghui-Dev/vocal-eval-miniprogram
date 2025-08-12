@@ -1,0 +1,259 @@
+/* components/heatmap/heatmap.wxss */
+
+.heatmap-container {
+  width: 100%;
+  background: white;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  padding: 20rpx;
+  position: relative;
+}
+
+/* 热力图主体 */
+.heatmap-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+/* 时间轴 */
+.time-axis {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.axis-label {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+  min-width: 80rpx;
+}
+
+.time-labels {
+  display: flex;
+  flex: 1;
+}
+
+.time-label {
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+  padding: 8rpx 4rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 热力图网格 */
+.heatmap-grid {
+  display: flex;
+  gap: 20rpx;
+}
+
+/* 节拍轴 */
+.beat-axis {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.beat-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 400rpx;
+}
+
+.beat-label {
+  font-size: 24rpx;
+  color: #666;
+  text-align: right;
+  padding: 8rpx;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+/* 热力图单元格 */
+.heatmap-cells {
+  flex: 1;
+  overflow: auto;
+  border: 1rpx solid #e8e8e8;
+  border-radius: 8rpx;
+}
+
+.heatmap-row {
+  display: flex;
+}
+
+.heatmap-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-width: 40rpx;
+  min-height: 40rpx;
+}
+
+.heatmap-cell:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+.cell-value {
+  font-size: 20rpx;
+  color: #333;
+  font-weight: bold;
+  text-shadow: 0 1rpx 2rpx rgba(255, 255, 255, 0.8);
+}
+
+/* 图例 */
+.legend {
+  margin-top: 30rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #e8e8e8;
+}
+
+.legend-title {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+  text-align: center;
+}
+
+.legend-gradient {
+  display: flex;
+  height: 20rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-bottom: 12rpx;
+}
+
+.legend-color {
+  flex: 1;
+  height: 100%;
+}
+
+.legend-labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.legend-label {
+  font-size: 20rpx;
+  color: #666;
+  text-align: center;
+  flex: 1;
+}
+
+/* 缩放控制 */
+.zoom-controls {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}
+
+.zoom-btn {
+  background: rgba(24, 144, 255, 0.1);
+  border: 1rpx solid #1890ff;
+  color: #1890ff;
+  font-size: 24rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  min-width: 60rpx;
+  height: 40rpx;
+  line-height: 24rpx;
+}
+
+.zoom-btn.active {
+  background: #1890ff;
+  color: white;
+}
+
+/* 提示框 */
+.tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10rpx);
+  transition: all 0.3s ease;
+}
+
+.tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tooltip-content {
+  white-space: nowrap;
+}
+
+.tooltip-title {
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.tooltip-value {
+  color: #ccc;
+}
+
+/* 响应式适配 */
+@media (max-width: 750rpx) {
+  .heatmap-container {
+    padding: 15rpx;
+    border-radius: 12rpx;
+  }
+  
+  .axis-label {
+    font-size: 24rpx;
+    min-width: 60rpx;
+  }
+  
+  .time-label,
+  .beat-label {
+    font-size: 20rpx;
+  }
+  
+  .legend-title {
+    font-size: 24rpx;
+  }
+  
+  .legend-label {
+    font-size: 18rpx;
+  }
+  
+  .tooltip {
+    font-size: 20rpx;
+    padding: 12rpx;
+  }
+}
+
+/* 滚动条样式 */
+.heatmap-cells::-webkit-scrollbar {
+  width: 8rpx;
+  height: 8rpx;
+}
+
+.heatmap-cells::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4rpx;
+}
+
+.heatmap-cells::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4rpx;
+}
+
+.heatmap-cells::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

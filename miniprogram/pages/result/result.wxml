@@ -1,0 +1,131 @@
+<!-- 主容器 -->
+<view class="container">
+    <!-- 顶部导航 -->
+    <view class="header">
+        <button class="back-btn" bind:tap="goBack">
+            <image src="/images/back-icon.png" class="back-icon" />
+        </button>
+        <text class="header-title">评估结果</text>
+    </view>
+    <!-- 评分概览区 -->
+    <view class="score-overview">
+        <view class="score-circle">
+            <view class="circle-progress" style="background: conic-gradient({{scoreColor}} 0deg, {{scoreColor}} {{totalScore * 3.6}}deg, #f0f0f0 {{totalScore * 3.6}}deg, #f0f0f0 360deg);">
+                <view class="circle-inner">
+                    <text class="score-number">{{totalScore}}</text>
+                    <text class="score-unit">分</text>
+                </view>
+            </view>
+        </view>
+        <view class="score-info">
+            <text class="score-level" style="color: {{scoreColor}};">{{scoreLevel}}</text>
+            <text class="score-desc">综合评估结果</text>
+        </view>
+    </view>
+    <!-- 三维指标区域 -->
+    <view class="metrics-section">
+        <!-- 音准检测 -->
+        <view class="metric-card">
+            <view class="metric-header">
+                <text class="metric-title">音准检测</text>
+                <text class="metric-score">{{resultData.pitch || 0}}分</text>
+            </view>
+            <view class="chart-container">
+                <ec-canvas id="pitch-chart" canvas-id="pitch-chart" ec="{{ ec }}"></ec-canvas>
+            </view>
+            <view class="metric-stats">
+                <view class="stat-item">
+                    <text class="stat-label">最大偏差</text>
+                    <text class="stat-value">
+                        {{pitchData.maxDeviation ? pitchData.maxDeviation.toFixed(2) : '0.00'}} 半音
+                    </text>
+                </view>
+                <view class="stat-item">
+                    <text class="stat-label">平均偏差</text>
+                    <text class="stat-value">
+                        {{pitchData.avgDeviation ? pitchData.avgDeviation.toFixed(2) : '0.00'}} 半音
+                    </text>
+                </view>
+            </view>
+        </view>
+        <!-- 节奏评估 -->
+        <view class="metric-card">
+            <view class="metric-header">
+                <text class="metric-title">节奏评估</text>
+                <text class="metric-score">{{resultData.rhythm || 0}}分</text>
+            </view>
+            <view class="rhythm-heatmap">
+                <view class="heatmap-grid">
+                    <view wx:for="{{rhythmData.heatmapData}}" wx:key="index" class="heatmap-cell" style="background-color: rgba({{255 - item[2] * 2.55}}, {{item[2] * 2.55}}, 0, 0.8);"></view>
+                </view>
+            </view>
+            <view class="metric-stats">
+                <view class="stat-item">
+                    <text class="stat-label">BPM误差</text>
+                    <text class="stat-value">{{rhythmData.bpmError || '0.0'}}%</text>
+                </view>
+            </view>
+        </view>
+        <!-- 咬字分析 -->
+        <view class="metric-card">
+            <view class="metric-header">
+                <text class="metric-title">咬字分析</text>
+                <text class="metric-score">{{resultData.articulation || 0}}分</text>
+            </view>
+            <view class="articulation-radar">
+                <view class="radar-item">
+                    <text class="radar-label">辅音清晰度</text>
+                    <view class="radar-bar">
+                        <view class="radar-fill" style="width: {{articulationData.consonant || 0}}%; background: {{articulationData.consonant < 60 ? '#e64340' : '#07C160'}};"></view>
+                    </view>
+                    <text class="radar-value">{{articulationData.consonant || 0}}%</text>
+                </view>
+                <view class="radar-item">
+                    <text class="radar-label">元音准确度</text>
+                    <view class="radar-bar">
+                        <view class="radar-fill" style="width: {{articulationData.vowel || 0}}%; background: {{articulationData.vowel < 60 ? '#e64340' : '#07C160'}};"></view>
+                    </view>
+                    <text class="radar-value">{{articulationData.vowel || 0}}%</text>
+                </view>
+                <view class="radar-item">
+                    <text class="radar-label">整体清晰度</text>
+                    <view class="radar-bar">
+                        <view class="radar-fill" style="width: {{articulationData.clarity || 0}}%; background: {{articulationData.clarity < 60 ? '#e64340' : '#07C160'}};"></view>
+                    </view>
+                    <text class="radar-value">{{articulationData.clarity || 0}}%</text>
+                </view>
+                <view class="radar-item">
+                    <text class="radar-label">流畅度</text>
+                    <view class="radar-bar">
+                        <view class="radar-fill" style="width: {{articulationData.fluency || 0}}%; background: {{articulationData.fluency < 60 ? '#e64340' : '#07C160'}};"></view>
+                    </view>
+                    <text class="radar-value">{{articulationData.fluency || 0}}%</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 训练建议区域 -->
+    <view class="suggestions-section">
+        <view class="section-title">
+            <text class="title-text">训练建议</text>
+        </view>
+        <view class="suggestions-list">
+            <view wx:for="{{suggestions}}" wx:key="index" class="suggestion-item {{item.priority}}">
+                <view class="suggestion-icon">
+                    <image src="{{item.icon}}" class="icon" />
+                </view>
+                <view class="suggestion-content">
+                    <text class="suggestion-title">{{item.title}}</text>
+                    <text class="suggestion-desc">{{item.content}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 底部占位 -->
+    <view class="bottom-placeholder"></view>
+</view>
+<!-- 操作按钮 -->
+<view class="action-buttons">
+    <button class="retest-btn" bind:tap="retest">重新测试</button>
+    <button class="save-btn" bind:tap="saveReport">保存报告</button>
+</view>

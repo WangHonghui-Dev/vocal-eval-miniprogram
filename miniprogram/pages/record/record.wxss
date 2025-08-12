@@ -1,0 +1,252 @@
+/* 主容器 */
+.container {
+  background: linear-gradient(180deg, #e6f7ff 0%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+/* 顶部标题区域 */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40rpx 30rpx 30rpx;
+  border-bottom: 1px solid #e8e8e8;
+  backdrop-filter: blur(10rpx);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1890ff;
+  text-align: center;
+  display: block;
+}
+
+/* 参考歌曲显示区 */
+.song-info {
+  padding: 40rpx 30rpx;
+  background: rgba(255, 255, 255, 0.8);
+  margin: 20rpx;
+  border-radius: 12rpx;
+}
+
+.song-item {
+  display: flex;
+  align-items: center;
+}
+
+.music-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.song-text {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 录音控制核心区域 */
+.record-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 40rpx;
+  min-height: 400rpx;
+}
+
+.record-btn {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: white;
+  background: #1890ff;
+  transition: all 0.3s ease;
+  box-shadow: 0 8rpx 24rpx rgba(24, 144, 255, 0.3);
+  margin-bottom: 40rpx;
+}
+
+.record-btn.recording {
+  background: #e64340;
+  box-shadow: 0 8rpx 24rpx rgba(230, 67, 64, 0.3);
+  animation: pulse 1.5s infinite;
+}
+
+.record-btn:active {
+  transform: scale(0.95);
+}
+
+.record-btn:disabled {
+  opacity: 0.6;
+  transform: scale(1);
+}
+
+/* 录音按钮脉冲动画 */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 8rpx 24rpx rgba(230, 67, 64, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 12rpx 32rpx rgba(230, 67, 64, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 8rpx 24rpx rgba(230, 67, 64, 0.3);
+  }
+}
+
+/* 录音时长显示 */
+.duration-display {
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.duration-text {
+  font-size: 28rpx;
+  color: #999;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+/* 音频预览区 */
+.audio-preview {
+  padding: 40rpx 30rpx;
+  background: rgba(255, 255, 255, 0.8);
+  margin: 20rpx;
+  border-radius: 12rpx;
+}
+
+.preview-title {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.preview-text {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.audio-player {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.audio-control {
+  width: 90%;
+  height: 80rpx;
+}
+
+/* 重录按钮 */
+.retry-section {
+  display: flex;
+  justify-content: center;
+}
+
+.retry-btn {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 20rpx 40rpx;
+  border-radius: 8rpx;
+  border: 2rpx solid #1890ff;
+  transition: all 0.3s ease;
+}
+
+.retry-btn:active {
+  background: rgba(24, 144, 255, 0.1);
+  transform: scale(0.98);
+}
+
+.retry-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.retry-text {
+  font-size: 28rpx;
+  color: #1890ff;
+}
+
+/* 底部占位 */
+.bottom-placeholder {
+  height: 240rpx;
+  width: 100%;
+}
+
+/* 提交评估按钮 */
+.submit-section {
+  position: fixed;
+  bottom: 60rpx;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.submit-btn {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: white;
+  background: #07C160;
+  transition: all 0.3s ease;
+  box-shadow: 0 8rpx 24rpx rgba(7, 193, 96, 0.3);
+}
+
+.submit-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 12rpx rgba(7, 193, 96, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  transform: scale(1);
+}
+
+.submit-btn.submitting {
+  background: #07C160;
+  opacity: 0.8;
+}
+
+/* 响应式适配 */
+@media (max-width: 750rpx) {
+  .header {
+    padding: 30rpx 20rpx 25rpx;
+  }
+  
+  .title {
+    font-size: 32rpx;
+  }
+  
+  .song-info,
+  .audio-preview {
+    margin: 15rpx;
+  }
+  
+  .record-section {
+    padding: 60rpx 30rpx;
+  }
+}

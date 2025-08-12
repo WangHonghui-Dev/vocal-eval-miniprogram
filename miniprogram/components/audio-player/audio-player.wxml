@@ -1,0 +1,29 @@
+<!-- components/audio-player/audio-player.wxml -->
+<view class="audio-player">
+    <!-- 播放控制区域 -->
+    <view class="control-area">
+        <!-- 播放/暂停按钮 -->
+        <button class="play-btn {{isPlaying ? 'playing' : ''}} active" bindtap="togglePlay">
+            <image class="play-icon" src="{{isPlaying ? '/images/pause.png' : '/images/play.png'}}" mode="aspectFit" />
+        </button>
+        <!-- 静音按钮 -->
+        <button class="mute-btn {{isMuted ? 'muted' : ''}} active" bindtap="toggleMute">
+            <image class="mute-icon" src="{{isMuted ? '/images/mute.png' : '/images/volume.png'}}" mode="aspectFit" />
+        </button>
+    </view>
+    <!-- 进度控制区域 -->
+    <view class="progress-area">
+        <!-- 当前时间 -->
+        <text class="time-text">{{formattedCurrentTime}}</text>
+        <!-- 进度条 -->
+        <view class="progress-container">
+            <slider class="progress-slider" value="{{progress}}" min="0" max="100" step="0.1" activeColor="#1890ff" backgroundColor="#eee" block-size="16" block-color="#1890ff" bindchange="onSliderChange" bindchanging="onSliderChanging" />
+        </view>
+        <!-- 总时长 -->
+        <text class="time-text">{{formattedDuration}}</text>
+    </view>
+    <!-- 循环播放指示器 -->
+    <view class="loop-indicator" wx:if="{{loop}}">
+        <image class="loop-icon" src="/images/loop.png" mode="aspectFit" />
+    </view>
+</view>
