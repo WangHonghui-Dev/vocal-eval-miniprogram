@@ -1,0 +1,224 @@
+/* 主容器 */
+.container {
+  background: linear-gradient(180deg, #e6f7ff 0%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+/* 顶部标题区域 */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40rpx 30rpx 30rpx;
+  border-bottom: 1px solid #e8e8e8;
+  backdrop-filter: blur(10rpx);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1890ff;
+  text-align: center;
+  display: block;
+}
+
+/* 歌曲列表区域 */
+.song-list {
+  padding: 20rpx 0;
+}
+
+.song-cell {
+  height: 100rpx !important;
+  padding: 0 30rpx !important;
+  display: flex !important;
+  align-items: center !important;
+  background: transparent !important;
+}
+
+.song-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rpx;
+  border-radius: 12rpx;
+  margin: 0 20rpx 10rpx;
+}
+
+/* 左侧音乐图标 */
+.music-icon {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+/* 中间歌曲信息 */
+.song-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.song-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 右侧单选按钮 */
+.radio-wrapper {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 空状态提示 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 200rpx 40rpx;
+  text-align: center;
+}
+
+.empty-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 40rpx;
+  opacity: 0.6;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 60rpx;
+  line-height: 1.5;
+}
+
+.refresh-btn {
+  background: none;
+  border: none;
+  color: #1890ff;
+  font-size: 32rpx;
+  padding: 20rpx 40rpx;
+  border-radius: 8rpx;
+  border: 2rpx solid #1890ff;
+  transition: all 0.3s ease;
+}
+
+.refresh-btn:active {
+  background: rgba(24, 144, 255, 0.1);
+  transform: scale(0.98);
+}
+
+/* 底部占位 */
+.bottom-placeholder {
+  height: 240rpx;
+  width: 100%;
+}
+
+/* 底部录音按钮 */
+.bottom-button-wrapper {
+  position: fixed;
+  bottom: 60rpx;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.record-btn {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 8rpx 24rpx rgba(24, 144, 255, 0.3);
+}
+
+.record-btn.active {
+  background: #1890ff;
+  transform: scale(1);
+}
+
+.record-btn.active:active {
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 12rpx rgba(24, 144, 255, 0.4);
+}
+
+.record-btn.disabled {
+  background: #1890ff;
+  opacity: 0.6;
+  transform: scale(1);
+}
+
+.record-btn.disabled:active {
+  transform: scale(1);
+}
+
+/* WeUI组件样式覆盖 */
+.van-cell-group {
+  background: transparent !important;
+}
+
+.van-cell {
+  background: transparent !important;
+  border: none !important;
+}
+
+.van-radio__icon {
+  border-color: #ddd !important;
+}
+
+.van-radio__icon--checked {
+  background-color: #07c160 !important;
+  border-color: #07c160 !important;
+}
+
+.van-radio__icon--checked .van-icon {
+  color: white !important;
+}
+
+/* 响应式适配 */
+@media (max-width: 750rpx) {
+  .song-item {
+    margin: 0 15rpx 8rpx;
+  }
+  
+  .header {
+    padding: 30rpx 20rpx 25rpx;
+  }
+  
+  .title {
+    font-size: 32rpx;
+  }
+}

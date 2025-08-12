@@ -1,4 +1,89 @@
-"node_modules/" 
-"__pycache__/" 
-".vscode/" 
-"uploads/" 
+# ======================
+# 操作系统生成文件
+# ======================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ======================
+# 开发环境/编辑器文件
+# ======================
+.vscode/*
+!.vscode/settings.json  # 保留自定义设置
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# ======================
+# Python 环境
+# ======================
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.python-version
+
+# ======================
+# Node.js 依赖
+# ======================
+miniprogram/node_modules/
+npm-debug.log
+yarn-error.log
+
+# ======================
+# 小程序生成文件
+# ======================
+miniprogram/dist/
+miniprogram/project.config.json
+miniprogram/app.log
+miniprogram/*.log
+
+# ======================
+# 临时文件和上传内容
+# ======================
+uploads/
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# ======================
+# 数据文件
+# ======================
+*.db
+*.sqlite
+*.sqlite3
+
+# ======================
+# 模型和大型文件
+# ======================
+*.h5
+*.pth
+*.pt
+*.tflite
+*.zip
+*.tar.gz
+
+# ======================
+# 编译文件
+# ======================
+build/
+dist/
+*.exe
+*.dll
+*.so
+
+# ======================
+# 密钥和敏感数据
+# ======================
+*.key
+*.pem
+*.cert
+*.env
+config.json
+secrets.ini

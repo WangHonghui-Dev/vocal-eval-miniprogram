@@ -1,0 +1,42 @@
+<!-- 主容器 -->
+<scroll-view class="container" scroll-y="true" style="height: 100vh;">
+    <!-- 顶部标题 -->
+    <view class="header">
+        <text class="title">请选择参考歌曲</text>
+    </view>
+    <!-- 歌曲列表区域 -->
+    <view class="song-list" wx:if="{{!isEmpty && songList.length > 0}}">
+        <van-cell-group>
+            <van-cell wx:for="{{songList}}" wx:key="id" class="song-item" bind:click="handleCellTap" data-id="{{item.id || item.songId || item.value}}" custom-class="song-cell">
+                <!-- 左侧音乐图标 -->
+                <view class="music-icon">
+                    <image src="/images/music-icon.png" class="icon" />
+                </view>
+                <!-- 中间歌曲信息 -->
+                <view class="song-info">
+                    <text class="song-name">
+                        {{item.name || item.title || item.songName}} - {{item.artist || item.singer || item.author}}
+                    </text>
+                </view>
+                <!-- 右侧单选按钮 -->
+                <view class="radio-wrapper">
+                    <van-radio name="{{item.id || item.songId || item.value}}" checked="{{selectedSongId === (item.id || item.songId || item.value)}}" bind:change="handleRadioChange" checked-color="#07c160" icon-size="40rpx" />
+                </view>
+            </van-cell>
+        </van-cell-group>
+    </view>
+    <!-- 空状态提示 -->
+    <view class="empty-state" wx:if="{{isEmpty || songList.length === 0}}">
+        <image src="/images/empty.png" class="empty-icon" />
+        <text class="empty-text">暂无歌曲，请刷新</text>
+        <button class="refresh-btn" bind:tap="loadSongs">刷新列表</button>
+    </view>
+    <!-- 底部占位，防止内容被底部按钮遮挡 -->
+    <view class="bottom-placeholder"></view>
+</scroll-view>
+<!-- 底部录音按钮 -->
+<view class="bottom-button-wrapper">
+    <button class="record-btn {{selectedSongId ? 'active' : 'disabled'}}" bind:tap="startRecord" disabled="{{!selectedSongId}}">
+        开始录音
+    </button>
+</view>

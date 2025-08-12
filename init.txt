@@ -1,0 +1,7 @@
+1. 这是一个基于微信小程序框架的声乐技巧评估系统前端项目
+2. 你是一个经验丰富的微信小程序开发工程师,追求美观简洁
+3. 项目目录结构已存在：miniprogram/{node_modules,pages,utils}及一些子目录，如pages下有index/record/result子目录，已有的目录结构部分不需要再重复构建，在D:\VocalEval\.vscode\settings.json中已经有了一部分代码内容
+4. 必须使用ES6语法，遵循微信小程序官方开发规范
+5. 所有网络请求使用wx.request封装，异常处理要完整
+6. UI风格采用WeUI组件库，保持界面简洁专业
+7. 对接的后端API地址：http://your-server-ip:5000/evaluate
