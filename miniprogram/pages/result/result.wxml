@@ -28,10 +28,18 @@
         <view class="metric-card">
             <view class="metric-header">
                 <text class="metric-title">音准检测</text>
-                <text class="metric-score">{{resultData.pitch || 0}}分</text>
+                <text class="metric-score">{{resultData.data.pitch.score || 0}}分</text>
             </view>
             <view class="chart-container">
-                <ec-canvas id="pitch-chart" canvas-id="pitch-chart" ec="{{ ec }}"></ec-canvas>
+                <view class="chart-placeholder">
+                    <text class="placeholder-text">音准偏差图表</text>
+                    <text class="placeholder-desc">
+                        最大偏差: {{pitchData.maxDeviation ? pitchData.maxDeviation.toFixed(2) : '0.00'}} 半音
+                    </text>
+                    <text class="placeholder-desc">
+                        平均偏差: {{pitchData.avgDeviation ? pitchData.avgDeviation.toFixed(2) : '0.00'}} 半音
+                    </text>
+                </view>
             </view>
             <view class="metric-stats">
                 <view class="stat-item">
@@ -52,7 +60,7 @@
         <view class="metric-card">
             <view class="metric-header">
                 <text class="metric-title">节奏评估</text>
-                <text class="metric-score">{{resultData.rhythm || 0}}分</text>
+                <text class="metric-score">{{resultData.data.rhythm.score || 0}}分</text>
             </view>
             <view class="rhythm-heatmap">
                 <view class="heatmap-grid">
@@ -70,7 +78,7 @@
         <view class="metric-card">
             <view class="metric-header">
                 <text class="metric-title">咬字分析</text>
-                <text class="metric-score">{{resultData.articulation || 0}}分</text>
+                <text class="metric-score">{{resultData.data.articulation.score || 0}}分</text>
             </view>
             <view class="articulation-radar">
                 <view class="radar-item">
@@ -112,7 +120,7 @@
         <view class="suggestions-list">
             <view wx:for="{{suggestions}}" wx:key="index" class="suggestion-item {{item.priority}}">
                 <view class="suggestion-icon">
-                    <image src="{{item.icon}}" class="icon" />
+                    <text class="icon">{{item.icon}}</text>
                 </view>
                 <view class="suggestion-content">
                     <text class="suggestion-title">{{item.title}}</text>

@@ -37,9 +37,9 @@
 }
 
 .music-icon {
-  width: 60rpx;
-  height: 60rpx;
+  font-size: 40rpx;
   margin-right: 20rpx;
+  color: #1890ff;
 }
 
 .song-text {
@@ -127,6 +127,50 @@
   border-radius: 12rpx;
 }
 
+.audio-player {
+  margin: 20rpx 0;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.play-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #1890ff;
+  color: white;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0 4rpx 8rpx rgba(24, 144, 255, 0.3);
+}
+
+.play-btn.playing {
+  background: #07C160;
+}
+
+.play-btn:active {
+  transform: scale(0.95);
+}
+
+.audio-info {
+  flex: 1;
+}
+
+.audio-time {
+  font-size: 28rpx;
+  color: #666;
+}
+
 .preview-title {
   text-align: center;
   margin-bottom: 30rpx;
@@ -172,9 +216,9 @@
 }
 
 .retry-icon {
-  width: 40rpx;
-  height: 40rpx;
+  font-size: 32rpx;
   margin-right: 10rpx;
+  color: #1890ff;
 }
 
 .retry-text {

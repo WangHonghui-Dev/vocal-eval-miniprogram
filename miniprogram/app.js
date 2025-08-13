@@ -1,11 +1,11 @@
 // app.js
 App({
   globalData: {
-    userInfo: null,       // 用户信息
-    audioContext: null,   // 音频播放上下文
-    history: [],          // 评估历史记录
-    openid: null,         // 用户openid
-    isLoggedIn: false     // 登录状态
+    userInfo: null, // 用户信息
+    audioContext: null, // 音频播放上下文
+    history: [], // 评估历史记录
+    openid: null, // 用户openid
+    isLoggedIn: false, // 登录状态
   },
 
   onLaunch() {
@@ -41,7 +41,7 @@ App({
         console.error('音频播放错误:', error);
         wx.showToast({
           title: '音频播放失败',
-          icon: 'error'
+          icon: 'error',
         });
       });
       console.log('音频上下文初始化成功');
@@ -62,7 +62,7 @@ App({
       },
       fail: (error) => {
         console.error('wx.login失败:', error);
-      }
+      },
     });
   },
 
@@ -121,7 +121,7 @@ App({
       wx.showToast({
         title: '程序异常',
         icon: 'error',
-        duration: 2000
+        duration: 2000,
       });
     });
 
@@ -130,7 +130,7 @@ App({
       wx.showToast({
         title: '程序错误',
         icon: 'error',
-        duration: 2000
+        duration: 2000,
       });
     });
   },
@@ -195,5 +195,5 @@ App({
     wx.removeStorageSync('isLoggedIn');
     wx.removeStorageSync('userInfo');
     console.log('用户已退出登录');
-  }
+  },
 });

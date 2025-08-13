@@ -7,7 +7,7 @@
     <!-- 参考歌曲显示区 -->
     <view class="song-info">
         <view class="song-item">
-            <image src="/images/music-icon.png" class="music-icon" />
+            <text class="music-icon">🎵</text>
             <text class="song-text">参考歌曲：{{songName}} - {{artist}}</text>
         </view>
     </view>
@@ -19,7 +19,7 @@
         </button>
         <!-- 录音时长显示 -->
         <view class="duration-display" wx:if="{{isRecording || hasRecorded}}">
-            <text class="duration-text">{{formatTime(recordDuration)}}</text>
+            <text class="duration-text">{{recordTimeText}}</text>
         </view>
     </view>
     <!-- 音频预览区 -->
@@ -29,12 +29,19 @@
         </view>
         <!-- 音频播放器 -->
         <view class="audio-player">
-            <audio src="{{tempFilePath}}" controls="{{true}}" class="audio-control"></audio>
+            <view class="audio-controls">
+                <button class="play-btn {{isPlaying ? 'playing' : ''}}" bind:tap="togglePlay">
+                    {{isPlaying ? '⏸️' : '▶️'}}
+                </button>
+                <view class="audio-info">
+                    <text class="audio-time">{{currentTime}} / {{duration}}</text>
+                </view>
+            </view>
         </view>
         <!-- 重录按钮 -->
         <view class="retry-section">
             <button class="retry-btn" bind:tap="retryRecord">
-                <image src="/images/retry.png" class="retry-icon" />
+                <text class="retry-icon">🔄</text>
                 <text class="retry-text">重新录制</text>
             </button>
         </view>

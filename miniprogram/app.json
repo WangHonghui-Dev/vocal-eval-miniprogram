@@ -1,9 +1,5 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/record/record",
-    "pages/result/result"
-  ],
+  "pages": ["pages/index/index", "pages/record/record", "pages/result/result"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1890ff",
@@ -11,12 +7,7 @@
     "navigationBarTextStyle": "white",
     "backgroundColor": "#f6f6f6"
   },
-  "usingComponents": {
-    "van-button": "@vant/weapp/button/index",
-    "van-cell": "@vant/weapp/cell/index",
-    "van-radio": "@vant/weapp/radio/index",
-    "van-icon": "@vant/weapp/icon/index"
-  },
+  "usingComponents": {},
   "permission": {
     "scope.record": {
       "desc": "需要您的麦克风权限进行录音评估"

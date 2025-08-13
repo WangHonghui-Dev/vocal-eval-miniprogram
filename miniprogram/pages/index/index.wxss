@@ -58,9 +58,9 @@
   margin-right: 20rpx;
 }
 
-.icon {
-  width: 60rpx;
-  height: 60rpx;
+.icon-text {
+  font-size: 40rpx;
+  color: #1890ff;
 }
 
 /* 中间歌曲信息 */
@@ -84,6 +84,13 @@
   text-overflow: ellipsis;
 }
 
+.song-detail {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+  display: block;
+}
+
 /* 右侧单选按钮 */
 .radio-wrapper {
   width: 80rpx;
@@ -104,8 +111,7 @@
 }
 
 .empty-icon {
-  width: 120rpx;
-  height: 120rpx;
+  font-size: 120rpx;
   margin-bottom: 40rpx;
   opacity: 0.6;
 }
@@ -186,27 +192,26 @@
   transform: scale(1);
 }
 
-/* WeUI组件样式覆盖 */
-.van-cell-group {
-  background: transparent !important;
+/* 原生radio组件样式 */
+radio {
+  transform: scale(1.2);
 }
 
-.van-cell {
-  background: transparent !important;
-  border: none !important;
+radio .wx-radio-input {
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #ddd;
 }
 
-.van-radio__icon {
-  border-color: #ddd !important;
+radio .wx-radio-input.wx-radio-input-checked {
+  background: #07c160;
+  border-color: #07c160;
 }
 
-.van-radio__icon--checked {
-  background-color: #07c160 !important;
-  border-color: #07c160 !important;
-}
-
-.van-radio__icon--checked .van-icon {
-  color: white !important;
+radio .wx-radio-input.wx-radio-input-checked::before {
+  color: white;
+  font-size: 24rpx;
 }
 
 /* 响应式适配 */

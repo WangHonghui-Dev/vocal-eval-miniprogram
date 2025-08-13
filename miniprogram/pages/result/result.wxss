@@ -144,6 +144,30 @@
   margin-bottom: 20rpx;
 }
 
+.chart-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+}
+
+.placeholder-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1890ff;
+  margin-bottom: 20rpx;
+}
+
+.placeholder-desc {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
 /* 统计数据 */
 .metric-stats {
   display: flex;

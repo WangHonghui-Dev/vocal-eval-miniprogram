@@ -6,28 +6,27 @@
     </view>
     <!-- 歌曲列表区域 -->
     <view class="song-list" wx:if="{{!isEmpty && songList.length > 0}}">
-        <van-cell-group>
-            <van-cell wx:for="{{songList}}" wx:key="id" class="song-item" bind:click="handleCellTap" data-id="{{item.id || item.songId || item.value}}" custom-class="song-cell">
-                <!-- 左侧音乐图标 -->
-                <view class="music-icon">
-                    <image src="/images/music-icon.png" class="icon" />
-                </view>
-                <!-- 中间歌曲信息 -->
-                <view class="song-info">
-                    <text class="song-name">
-                        {{item.name || item.title || item.songName}} - {{item.artist || item.singer || item.author}}
-                    </text>
-                </view>
-                <!-- 右侧单选按钮 -->
-                <view class="radio-wrapper">
-                    <van-radio name="{{item.id || item.songId || item.value}}" checked="{{selectedSongId === (item.id || item.songId || item.value)}}" bind:change="handleRadioChange" checked-color="#07c160" icon-size="40rpx" />
-                </view>
-            </van-cell>
-        </van-cell-group>
+        <view class="song-item" wx:for="{{songList}}" wx:key="id" bind:tap="handleCellTap" data-id="{{item.id || item.songId || item.value}}">
+            <!-- 左侧音乐图标 -->
+            <view class="music-icon">
+                <text class="icon-text">🎵</text>
+            </view>
+            <!-- 中间歌曲信息 -->
+            <view class="song-info">
+                <text class="song-name">
+                    {{item.name || item.title || item.songName}} - {{item.artist || item.singer || item.author}}
+                </text>
+                <text class="song-detail">{{item.duration}} | {{item.difficulty}}</text>
+            </view>
+            <!-- 右侧单选按钮 -->
+            <view class="radio-wrapper">
+                <radio name="{{item.id || item.songId || item.value}}" checked="{{selectedSongId === (item.id || item.songId || item.value)}}" bind:change="handleRadioChange" color="#07c160" />
+            </view>
+        </view>
     </view>
     <!-- 空状态提示 -->
     <view class="empty-state" wx:if="{{isEmpty || songList.length === 0}}">
-        <image src="/images/empty.png" class="empty-icon" />
+        <text class="empty-icon">📝</text>
         <text class="empty-text">暂无歌曲，请刷新</text>
         <button class="refresh-btn" bind:tap="loadSongs">刷新列表</button>
     </view>
